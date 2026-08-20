@@ -18,7 +18,9 @@ static constexpr Position startzone_offset={0.5f, 1.8f};          // 開始時ro
 static constexpr Position encoder_offset={0.0f, 0.0f, 0.0f, 0.0f}; // robot_posからエンコーダ中心の補正 [m]
 static constexpr Position sdm_offset[]={//robot_pos(旋回中心)から見たsdmの補正[m]
                                             {},//sdm1
-                                            {}//sdm2
+                                            {},//sdm2
+                                            {},//sdm3
+                                            {}//Y軸測定用sdmの中心
                                         };
 
 // 的の座標（敵陣・青ゾーン側のため y はマイナス） [m]
