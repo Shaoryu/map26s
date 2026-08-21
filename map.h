@@ -13,14 +13,21 @@ enum target_num{
     controll
 };
 
+enum sdm_num{
+    sdm1,
+    sdm2,
+    sdm3,
+    sdm_Y
+};
+
 // オフセット・初期値
 static constexpr Position startzone_offset={0.5f, 1.8f};          // 開始時robot_posへの補正 [m]
-static constexpr Position encoder_offset={0.0f, 0.0f, 0.0f, 0.0f}; // robot_posからエンコーダ中心の補正 [m]
+static constexpr Position encoder_offset={0.2f, -0.3f, 0.0f, 0.0f}; // robot_posからエンコーダ中心の補正 [m]
 static constexpr Position sdm_offset[]={//robot_pos(旋回中心)から見たsdmの補正[m]
                                             {},//sdm1
-                                            {},//sdm2
-                                            {},//sdm3
-                                            {}//Y軸測定用sdmの中心
+                                            { 300.f,-500.f,30.f,-M_PI/2.f},//sdm2
+                                            {-300.f,-500.f,30.f,-M_PI/2.f},//sdm3
+                                            {   0.f,-500.f,30.f,-M_PI/2.f}//Y軸測定用sdmの中心
                                         };
 
 // 的の座標（敵陣・青ゾーン側のため y はマイナス） [m]

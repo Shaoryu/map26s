@@ -1,7 +1,7 @@
 #pragma once
 #include "mbed.h"
 #ifndef M_PI
-#define M_PI 3.14159f
+#define M_PI 3.141592f
 #endif
 
 #ifndef G_DEFINED
@@ -12,6 +12,7 @@ constexpr float g = 9.80665f;
 #endif
 
 #ifndef EPSILON
+//THRESHOLDは許容誤差として使用
 #define EPSILON 1e-6f
 #endif
 
@@ -32,7 +33,7 @@ struct Position{
     float pos_x = 0.0f; 
     float pos_y = 0.0f;
     float pos_z = 0.0f;
-    float angle = 0.0f;
+    float angle = 0.0f;//[rad]
 };
 #endif
 
@@ -58,12 +59,27 @@ inline void vec_sum(Position* pos,const Position add){
     pos->angle+=add.angle;
     return;
 }
-static Position vec_sum(const Position pos,const Position add){
+inline Position vec_sum(const Position pos,const Position add){
     Position ans={pos.pos_x+add.pos_x,pos.pos_y+add.pos_y,pos.pos_z+add.pos_z,pos.angle+add.angle};
     return ans;
 }
 #endif
+//minus
 
+#ifndef VEC_DIFF_DEFINED
+#define VEC_DIFF_DEFINED
+inline void vec_diff(Position* pos,const Position add){
+    pos->pos_x-=add.pos_x;
+    pos->pos_y-=add.pos_y;
+    pos->pos_z-=add.pos_z;
+    pos->angle-=add.angle;
+    return;
+}
+inline Position vec_diff(const Position pos,const Position add){
+    Position ans={pos.pos_x-add.pos_x,pos.pos_y-add.pos_y,pos.pos_z-add.pos_z,pos.angle-add.angle};
+    return ans;
+}
+#endif
 
 static float normalizeAngle(float angle) {
     while (angle > M_PI)  angle -= 2.0f * M_PI;
