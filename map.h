@@ -22,7 +22,7 @@ enum sdm_num{
 
 // オフセット・初期値
 static constexpr Position startzone_offset={0.5f, 1.8f};          // 開始時robot_posへの補正 [m]
-static constexpr Position encoder_offset={0.2f, -0.3f, 0.0f, 0.0f}; // robot_posからエンコーダ中心の補正 [m]
+static constexpr Position encoder_offset={0.0f, 0.343f, 0.0f, 0.0f}; // robot_posからエンコーダ中心の補正 [m]
 static constexpr Position sdm_offset[]={//robot_pos(旋回中心)から見たsdmの補正[m]
                                             {},//sdm1
                                             { 300.f,-500.f,30.f,-M_PI/2.f},//sdm2
