@@ -148,3 +148,16 @@ inline float deg2rad(float deg){return deg*2*M_PI/360.f;};
 inline float rad2deg(float rad){return rad*360.f/2/M_PI;};
 
 #endif
+
+template<typename T>
+void limitter(T *data,T max){
+    if(*data>max)*data=max;
+    else if(*data<-max)*data=-max;
+    return;
+}
+template<typename T>
+T limitter(T data,T max){
+    if(data>max)data=max;
+    else if(data<-max)data=-max;
+    return data;
+}
