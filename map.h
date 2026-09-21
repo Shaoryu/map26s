@@ -21,7 +21,7 @@ enum sdm_num{
 };
 
 // オフセット・初期値
-static constexpr Position startzone_offset={0.5f, 1.8f};          // 開始時robot_posへの補正 [m]
+static constexpr Position startzone_offset={0.f, 0.f};          // 開始時robot_posへの補正 [m]
 static constexpr Position encoder_offset={0.0f, 0.343f, 0.0f, 0.0f}; // robot_posからエンコーダ中心の補正 [m]
 static constexpr Position sdm_offset[]={//robot_pos(旋回中心)から見たsdmの補正[m]
                                             {},//sdm1
@@ -30,24 +30,25 @@ static constexpr Position sdm_offset[]={//robot_pos(旋回中心)から見たsdm
                                             {   0.f,-500.f,30.f,-M_PI/2.f}//Y軸測定用sdmの中心
                                         };
 
-// 的の座標（敵陣・青ゾーン側のため y はマイナス） [m]
-static constexpr target desk1_t={2.6f, 2.955f, -3.6f};             // 手前の方（机）
-static constexpr target desk2_t={8.29f, 8.645f, -3.6f};            // 奥の方（机）
-static constexpr target flag_t={5.8f, 6.1f, -2.95f};               // 旗
-static constexpr target bucket1_t={5.93f, 6.1f, -0.57f};           // 敵陣真ん中（固定バケツ①）
-static constexpr target bucket2_t={3.62f, 3.8f, -1.18f};           // 敵陣スタートゾーン側（固定バケツ②）
-static constexpr target bucket3_t={8.32f, 8.5f, -0.48f};           // 敵陣奥側（固定バケツ③）
+// 的の座標（敵陣・青ゾーン側） [m]
+constexpr target desk1_t={2.1f, 2.455f, -5.4f};             // 手前の方（机）
+constexpr target desk2_t={7.79f, 8.145f, -5.4f};            // 奥の方（机）
+constexpr target flag_t={5.3f, 5.6f, -4.75f};               // 旗
+constexpr target bucket1_t={5.43f, 5.6f, -2.37f};           // 敵陣真ん中（固定バケツ①）
+constexpr target bucket2_t={3.12f, 3.3f, -2.98f};           // 敵陣スタートゾーン側（固定バケツ②）
+constexpr target bucket3_t={7.82f, 8.0f, -2.28f};           // 敵陣奥側（固定バケツ③）
 
-// オブジェクトの配置座標（自陣・赤ゾーン側。cornerは右上角、w=xサイズ、d=yサイズ） [m]
-static constexpr ObjectPos desk1_m={{2.6f, 5.19f, 0.0f, 0.0f}, 0.71f, 0.51f};      // 手前（上側）の机
-static constexpr ObjectPos desk2_m={{8.29f, 5.19f, 0.0f, 0.0f}, 0.71f, 0.51f};     // 奥（下側）の机
-static constexpr ObjectPos flag_m={{5.8f, 1.56f, 0.0f, 0.0f}, 0.6f, 0.6f};         // 自陣の旗
-static constexpr ObjectPos bucket1_m={{5.93f, 0.4f, 0.0f, 0.0f}, 0.34f, 0.34f};    // 自陣真ん中バケツ①
-static constexpr ObjectPos bucket2_m={{3.62f, 1.0f, 0.0f, 0.0f}, 0.36f, 0.36f};    // 自陣スタート側バケツ②
-static constexpr ObjectPos bucket3_m={{8.32f, 0.3f, 0.0f, 0.0f}, 0.36f, 0.36f};    // 自陣奥側バケツ③
-static constexpr ObjectPos chair_m={{4.81f, 4.75f, 0.0f, 0.0f}, 0.42f, 0.46f};      // 赤ゾーン中央左の椅子
-static constexpr ObjectPos replenish_m={{-1.0f, 1.475f, 0.0f, 0.0f}, 0.45f, 0.65f}; // 補充スポット
-static constexpr ObjectPos controll_m={{-1.0f, 3.3f, 0.0f, 0.0f}, 1.0f, 2.4f};     // コントロールステーション
+// オブジェクトの配置座標（自陣・赤ゾーン側。cornerは右上角、w=x方向サイズ, d=y方向サイズ） [m]
+constexpr ObjectPos desk1_m={{2.1f, 3.39f, 0.0f, 0.0f}, 0.71f, 0.51f};       // 手前（上側）の机
+constexpr ObjectPos desk2_m={{7.79f, 3.39f, 0.0f, 0.0f}, 0.71f, 0.51f};      // 奥（下側）の机
+constexpr ObjectPos flag_m={{5.3f, -0.04f, 0.0f, 0.0f}, 0.6f, 0.6f};         // 自陣の旗
+constexpr ObjectPos bucket1_m={{5.43f, -1.4f, 0.0f, 0.0f}, 0.34f, 0.34f};    // 自陣真ん中バケツ①
+constexpr ObjectPos bucket2_m={{3.12f, -0.8f, 0.6f, 0.0f}, 0.36f, 0.36f};    // 自陣スタート側バケツ②（木台H600）
+constexpr ObjectPos bucket3_m={{7.82f, -1.5f, 0.3f, 0.0f}, 0.36f, 0.36f};    // 自陣奥側バケツ③（木台H300）
+constexpr ObjectPos chair_m={{4.31f, 2.95f, 0.0f, 0.0f}, 0.42f, 0.46f};      // 赤ゾーン中央左の椅子
+constexpr ObjectPos replenish_m={{-0.325f, -0.8f, 0.0f, 0.0f}, 0.65f, 0.45f};// 補充スポット
+constexpr ObjectPos controll_m={{-0.5f, 1.5f, 0.0f, 0.0f}, 2.6f, 1.0f};      // コントロールステーション
+constexpr ObjectPos kyodan_m={{-0.5f, -2.1f, 0.2f, 0.0f}, 10.5f, 0.6f};      // 教壇（共有ゾーン・高さH200）
 
 static const ObjectPos* obstacles[] = {
     &desk1_m, &desk2_m, &flag_m,
