@@ -31,10 +31,10 @@ static constexpr Position encoder_offset={0.0f, 0.343f, 0.0f, 0.0f}; // robot_po
 //robot_pos(旋回中心)から見たsdmの補正[m]
 // SDMのオフセット [m] (mm表記から修正)
 static constexpr Position sdm_offset[]={
-    {}, // sdm1
-    { 0.3f, -0.5f, 0.03f, -M_PI/2.f}, // sdm2
-    {-0.3f, -0.5f, 0.03f, -M_PI/2.f}, // sdm3
-    { 0.0f, -0.5f, 0.03f, -M_PI/2.f}  // Y軸測定用sdmの中心
+    {-0.4f, -0.495f, 0.02f, -M_PI/2.f}, // sdm1
+    { 0.4f, -0.495f, 0.02f, -M_PI/2.f}, // sdm2
+    {}, // sdm3
+    { 0.0f, -0.495f, 0.02f, -M_PI/2.f}  // Y軸測定用sdmの中心
 };
 
 // ==========================================
